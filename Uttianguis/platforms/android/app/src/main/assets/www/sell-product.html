@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vender Producto - UTTianguis</title>
+    <link rel="icon" href="assets/images/Archivo ico.ico" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark container">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.jpg" alt="UTTianguis Logo" height="40">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="marketplace.html">Explorar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="favorites.html">Favoritos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="sell-product.html">Vender</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin-dashboard.html">Administración</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex auth-buttons">
+                        <!-- Add this notification dropdown before the auth buttons -->
+                        <div class="dropdown me-2 auth-only-logged-in" style="display: none;">
+                            <button class="btn btn-outline-light position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                <i class="fas fa-bell"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge">
+                                    3
+                                    <span class="visually-hidden">unread notifications</span>
+                                </span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end notification-dropdown p-0" aria-labelledby="notificationDropdown" style="width: 320px; max-height: 400px; overflow-y: auto;">
+                                <div class="notification-header d-flex justify-content-between align-items-center p-3 border-bottom">
+                                    <h6 class="mb-0">Notificaciones</h6>
+                                    <button class="btn btn-sm text-primary p-0" id="mark-all-read">Marcar todo como leído</button>
+                                </div>
+                                <div class="notification-body">
+                                    <!-- Notifications will be loaded here -->
+                                </div>
+                                <div class="notification-footer text-center p-2 border-top">
+                                    <a href="notifications.html" class="text-decoration-none">Ver todas las notificaciones</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="sign-in.html" class="btn btn-outline-light me-2 auth-only-logged-out">Iniciar Sesión</a>
+                        <a href="sign-up.html" class="btn btn-light auth-only-logged-out">Registrarse</a>
+                        <div class="dropdown auth-only-logged-in" style="display: none;">
+                            <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i>
+                                <span id="username">Usuario</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="profile.html">Mi Perfil</a></li>
+                                <li><a class="dropdown-item" href="my-products.html">Mis Productos</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout-button">Cerrar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="h4 mb-0">Vender un Producto</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="sellProductForm">
+                            <!-- Título -->
+                            <div class="mb-3">
+                                <label for="product-title" class="form-label">Título del Producto</label>
+                                <input type="text" class="form-control" id="product-title" required>
+                            </div>
+
+                            <!-- Descripción -->
+                            <div class="mb-3">
+                                <label for="product-description" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="product-description" rows="4" required></textarea>
+                            </div>
+
+                            <!-- Categoría -->
+                            <div class="mb-3">
+                                <label for="product-category" class="form-label">Categoría</label>
+                                <select class="form-select" id="product-category" required>
+                                    <option value="">Selecciona una categoría</option>
+                                    <option value="1">Electrónicos</option>
+                                    <option value="2">Libros</option>
+                                    <option value="3">Ropa</option>
+                                    <option value="4">Comida/Lunches</option>
+                                    <option value="5">Tutoría/Ayuda para tareas</option>
+                                    <option value="6">Deportes</option>
+                                    <option value="7">Instrumentos musicales</option>
+                                    <option value="8">Material escolar</option>
+                                    <option value="9">Videojuegos</option>
+                                    <option value="10">Transporte/Rides</option>
+                                    <option value="11">Eventos/Boletos</option>
+                                    <option value="12">Otros</option>
+                                </select>
+                            </div>
+
+                            <!-- Precio -->
+                            <div class="mb-3">
+                                <label for="product-price" class="form-label">Precio</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="product-price" min="0" step="0.01" required>
+                                </div>
+                            </div>
+
+                            <!-- Imágenes -->
+                            <div class="mb-3">
+                                <label for="product-images" class="form-label">Imágenes del Producto</label>
+                                <input type="file" class="form-control" id="product-images" accept="image/*" multiple required>
+                                <div id="imagePreview" class="mt-2 d-flex flex-wrap gap-2"></div>
+                            </div>
+
+                            <!-- Estado -->
+                            <div class="mb-3">
+                                <label for="product-condition" class="form-label">Estado</label>
+                                <select class="form-select" id="product-condition" required>
+                                    <option value="">Selecciona el estado</option>
+                                    <option value="new">Nuevo</option>
+                                    <option value="like_new">Como nuevo</option>
+                                    <option value="good">Bueno</option>
+                                    <option value="fair">Regular</option>
+                                    <option value="poor">Pobre</option>
+                                </select>
+                            </div>
+
+                            <!-- Stock -->
+                             <!--
+                            <div class="mb-3">
+                                <label for="product-stock" class="form-label">Stock Disponible</label>
+                                <input type="number" class="form-control" id="product-stock" min="1" value="1" required>
+                            </div>
+                            -->
+
+                            <!-- Punto de Encuentro -->
+                            <div class="mb-3">
+                                <label for="product-meeting-point" class="form-label">Punto de Encuentro</label>
+                                <select class="form-select" id="product-meeting-point" required>
+                                    <option value="">Selecciona un punto de encuentro</option>
+                                    <option value="Estacionamiento A">Estacionamiento A</option>
+                                    <option value="Estacionamiento B">Estacionamiento B</option>
+                                    <option value="entrada_principal">Entrada Principal</option>
+                                    <option value="Cafeteria">Cafetería</option>
+                                    <option value="CEIT">CEIT</option>
+                                    <option value="edificio_a">Edificio A</option>
+                                    <option value="edificio_b">Edificio B</option>
+                                    <option value="edificio_c">Edificio C</option>
+                                    <option value="edificio_d">Edificio D</option>
+                                    <option value="edificio_e">Edificio E</option>
+                                </select>
+                            </div>
+
+                            <!-- Número de WhatsApp -->
+                            <div class="mb-3">
+                                <label for="product-whatsapp" class="form-label">Número de WhatsApp</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fab fa-whatsapp"></i></span>
+                                    <input type="tel" class="form-control" id="product-whatsapp" 
+                                           pattern="[0-9]{10}" 
+                                           placeholder="10 dígitos sin espacios ni guiones"
+                                           required>
+                                </div>
+                                <div class="form-text">Ingresa tu número de WhatsApp de 10 dígitos</div>
+                            </div>
+
+                            <!-- Botones -->
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-upload me-2"></i>Publicar Producto
+                                </button>
+                                <a href="marketplace.html" class="btn btn-outline-secondary">
+                                    <i class="fas fa-times me-2"></i>Cancelar
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="assets/images/Logotipo aplicación..jpg" alt="UTTianguis Logo" height="40" class="mb-3">
+                    <p>UTTianguis es el marketplace oficial para la comunidad universitaria de la Universidad Tecnológica de Tamaulipas Norte.</p>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5>Enlaces</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a href="index.html" class="nav-link text-white p-0 mb-2">Inicio</a></li>
+                        <li class="nav-item"><a href="marketplace.html" class="nav-link text-white p-0 mb-2">Explorar</a></li>
+                        <li class="nav-item"><a href="sell-product.html" class="nav-link text-white p-0 mb-2">Vender</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5>Ayuda</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a href="faq.html" class="nav-link text-white p-0 mb-2">Preguntas Frecuentes</a></li>
+                        <li class="nav-item"><a href="terms.html" class="nav-link text-white p-0 mb-2">Términos de Uso</a></li>
+                        <li class="nav-item"><a href="privacy.html" class="nav-link text-white p-0 mb-2">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5>Contáctanos</h5>
+                    <p><i class="fas fa-envelope me-2"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81e2eeeff5e0e2f5eec1f4f5f5e8e0efe6f4e8f2afe4e5f4afecf9">[email&#160;protected]</a></p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Universidad Tecnológica de Tamaulipas Norte</p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="#" class="text-white fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 UTTianguis. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/validation.js"></script>
+    <script type="module" src="js/sell-product.js"></script>
+    <script type="module">
+        import { validateSellAccess } from "./js/validation.js";
+        
+        // Verificar acceso al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!validateSellAccess()) {
+                return;
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "mx.edu.uttn.uttianguis"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "mx.edu.uttn.uttianguis"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "mx.edu.uttn.uttianguis"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "mx.edu.uttn.uttianguis"
+    }
+  },
+  "dependent_plugins": {}
+}

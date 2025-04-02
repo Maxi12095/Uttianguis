@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de Producto - UTTianguis</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+</head>
+<body>
+  <div class="app-container">
+      <!-- Header -->
+      <header class="app-header">
+          <div class="header-left">
+              <a href="javascript:history.back()" class="back-button">
+                  <i class="fas fa-arrow-left"></i>
+              </a>
+              <h1>Detalle</h1>
+          </div>
+          <div class="header-right">
+              <button id="share-button" class="icon-button">
+                  <i class="fas fa-share-alt"></i>
+              </button>
+              <button id="report-button" class="icon-button">
+                  <i class="fas fa-flag"></i>
+              </button>
+          </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="app-content product-detail-content">
+          <!-- Breadcrumb -->
+          <div class="breadcrumb">
+              <a href="marketplace.html" class="breadcrumb-item">Marketplace</a>
+              <i class="fas fa-chevron-right breadcrumb-separator"></i>
+              <a href="#" class="breadcrumb-item category">Categoría</a>
+              <i class="fas fa-chevron-right breadcrumb-separator"></i>
+              <span class="breadcrumb-item active product-title">Producto</span>
+          </div>
+
+          <!-- Product Images Slider -->
+          <div class="product-images-container">
+              <div class="swiper product-images-slider">
+                  <div class="swiper-wrapper" id="product-images">
+                      <!-- Images will be loaded here dynamically -->
+                      <div class="swiper-slide product-image-slide">
+                          <div class="product-image-placeholder">
+                              <div class="spinner"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+              </div>
+          </div>
+
+          <!-- Product Info -->
+          <div class="product-info-container">
+              <div class="product-header">
+                  <h2 class="product-title">Cargando...</h2>
+                  <button class="favorite-button" id="favorite-button">
+                      <i class="far fa-heart"></i>
+                  </button>
+              </div>
+              <div class="product-price">$0.00</div>
+              <div class="product-meta">
+                  <div class="product-category"><i class="fas fa-tag"></i> Categoría</div>
+                  <div class="product-date"><i class="far fa-calendar-alt"></i> Fecha</div>
+              </div>
+              <div class="product-description">
+                  <h3>Descripción</h3>
+                  <p>Cargando descripción...</p>
+              </div>
+          </div>
+
+          <!-- Seller Info -->
+          <div class="seller-info-container">
+              <h3>Vendedor</h3>
+              <div class="seller-info">
+                  <div class="seller-avatar">
+                      <img src="img/icono.jpg" alt="Avatar del vendedor" id="seller-avatar">
+                  </div>
+                  <div class="seller-details">
+                      <div class="seller-name" id="seller-name">Cargando...</div>
+                      <div class="seller-rating">
+                          <i class="fas fa-star"></i>
+                          <span id="seller-rating">0.0</span>
+                          <span class="rating-count" id="rating-count">(0)</span>
+                      </div>
+                  </div>
+                  <a href="#" class="seller-profile-link" id="seller-profile-link">
+                      Ver perfil
+                      <i class="fas fa-chevron-right"></i>
+                  </a>
+              </div>
+          </div>
+      </main>
+
+      <!-- Contact Button -->
+      <div class="contact-button-container">
+          <button id="contact-seller" class="button primary-button contact-button">
+              <i class="fab fa-whatsapp"></i>
+              Contactar al vendedor
+          </button>
+      </div>
+
+      <!-- Bottom Navigation -->
+      <nav class="bottom-nav">
+          <a href="index.html" class="nav-item">
+              <i class="fas fa-home"></i>
+              <span>Inicio</span>
+          </a>
+          <a href="marketplace.html" class="nav-item active">
+              <i class="fas fa-store"></i>
+              <span>Explorar</span>
+          </a>
+          <a href="sell-product.html" class="nav-item">
+              <i class="fas fa-plus-circle"></i>
+              <span>Vender</span>
+          </a>
+          <a href="favorites.html" class="nav-item">
+              <i class="far fa-heart"></i>
+              <span>Favoritos</span>
+          </a>
+          <a href="profile.html" class="nav-item">
+              <i class="fas fa-user"></i>
+              <span>Perfil</span>
+          </a>
+      </nav>
+  </div>
+
+  <!-- Report Modal -->
+  <div class="modal" id="report-modal">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2>Reportar producto</h2>
+              <button class="close-modal">&times;</button>
+          </div>
+          <div class="modal-body">
+              <form id="report-form">
+                  <div class="form-group">
+                      <label for="report-reason">Motivo del reporte</label>
+                      <select id="report-reason" required>
+                          <option value="">Selecciona un motivo</option>
+                          <option value="prohibited">Producto prohibido</option>
+                          <option value="inappropriate">Contenido inapropiado</option>
+                          <option value="fake">Producto falso o estafa</option>
+                          <option value="other">Otro motivo</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="report-description">Descripción</label>
+                      <textarea id="report-description" rows="4" placeholder="Describe el problema con este producto" required></textarea>
+                  </div>
+                  <div class="form-group">
+                      <label for="report-screenshot">Captura de pantalla (opcional)</label>
+                      <input type="file" id="report-screenshot" accept="image/*">
+                  </div>
+                  <div class="form-actions">
+                      <button type="button" class="button secondary-button cancel-report">Cancelar</button>
+                      <button type="submit" class="button primary-button">Enviar reporte</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+  <!-- Hidden data element to store product ID -->
+  <div id="product-data" data-id="" data-category="" style="display: none;"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script type="module" src="js/product-detail.js"></script>
+</body>
+</html>
+

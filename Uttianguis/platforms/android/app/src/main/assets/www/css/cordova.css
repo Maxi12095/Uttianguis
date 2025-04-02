@@ -1,0 +1,464 @@
+/**
+ * Estilos específicos para la aplicación Cordova de UTTianguis
+ * Estos estilos complementan los estilos base de la aplicación web
+ */
+
+/* Ajustes generales para móviles */
+body {
+  -webkit-touch-callout: none; /* Prevenir menú contextual en iOS */
+  -webkit-text-size-adjust: none; /* Prevenir ajuste automático de texto */
+  -webkit-user-select: none; /* Prevenir selección de texto */
+  -webkit-tap-highlight-color: transparent; /* Eliminar resaltado al tocar */
+  -webkit-overflow-scrolling: touch; /* Scroll con inercia */
+  user-select: none; /* Prevenir selección de texto */
+  touch-action: manipulation; /* Optimizar para toques */
+  background-color: #f8f9fa;
+  padding-top: env(safe-area-inset-top); /* Soporte para notch en iOS */
+  padding-bottom: env(safe-area-inset-bottom); /* Soporte para home indicator en iOS */
+  /*padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);*/
+}
+
+/* Ajustes para dispositivos con notch */
+.header,
+.navbar-fixed-top {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+
+.footer,
+.navbar-fixed-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Indicador de carga */
+.loading-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: white;
+}
+
+.loading-indicator .spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 15px;
+}
+
+.loading-indicator p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.loading-indicator .progress {
+  width: 80%;
+  max-width: 300px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.loading-indicator .progress-bar {
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+/* Indicador de sincronización */
+.sync-indicator {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  padding: 10px 15px;
+  z-index: 9000;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  max-width: 90%;
+}
+
+.sync-indicator .sync-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sync-indicator .spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 8px;
+}
+
+.sync-indicator p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.sync-indicator .progress {
+  width: 100%;
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.sync-indicator .progress-bar {
+  height: 100%;
+  background-color: white;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* Mensaje de sin conexión */
+.offline-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  z-index: 9000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.offline-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offline-content i {
+  margin-right: 8px;
+}
+
+/* Ajustes para modo sin conexión */
+.offline-mode .requires-connection {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.offline-mode .offline-hidden {
+  display: none !important;
+}
+
+.offline-mode .offline-visible {
+  display: block !important;
+}
+
+/* Notificaciones locales */
+.app-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  width: 90%;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9500;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.app-notification.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+.notification-content {
+  padding: 15px;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.notification-header h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.close-notification {
+  background: none;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  color: #999;
+}
+
+.notification-body p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Ajustes para botones de cámara y galería */
+.camera-button,
+.gallery-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  color: #212529;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.camera-button i,
+.gallery-button i {
+  margin-right: 6px;
+}
+
+.camera-button:active,
+.gallery-button:active {
+  background-color: #e9ecef;
+}
+
+/* Contenedores de imágenes */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: #f8f9fa;
+  border: 1px dashed #dee2e6;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.image-container .placeholder-text {
+  color: #6c757d;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.image-container .image-actions {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+/* Animaciones */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Ajustes para StatusBar */
+.status-bar-padding {
+  padding-top: 20px; /* Altura estándar de la barra de estado */
+}
+
+/* Ajustes para dispositivos con notch */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .status-bar-padding {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .has-notch header {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .has-notch footer {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 320px) {
+  .btn {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* Ajustes para dispositivos con poca memoria */
+@media (max-height: 500px) {
+  .image-container {
+    height: 150px;
+  }
+}
+
+/* Estilos para mensajes toast */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 4px;
+  z-index: 9999;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  max-width: 80%;
+  text-align: center;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast-info {
+  background-color: rgba(0, 123, 255, 0.9);
+}
+
+.toast-success {
+  background-color: rgba(40, 167, 69, 0.9);
+}
+
+.toast-warning {
+  background-color: rgba(255, 193, 7, 0.9);
+}
+
+.toast-error {
+  background-color: rgba(220, 53, 69, 0.9);
+}
+
+/* Estilos para estado sin conexión */
+.offline-indicator {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #dc3545;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  z-index: 9999;
+  font-size: 14px;
+}
+
+body.offline .offline-indicator {
+  display: block;
+}
+
+/* Ajustes para elementos interactivos */
+button,
+a,
+input[type="button"],
+input[type="submit"] {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ajustes para formularios en dispositivos móviles */
+input,
+select,
+textarea {
+  font-size: 16px !important; /* Prevenir zoom en iOS */
+}
+
+/* Estilos para splash screen personalizado */
+.custom-splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: opacity 0.5s ease;
+}
+
+.custom-splash.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-splash img {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.custom-splash .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 123, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #007bff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

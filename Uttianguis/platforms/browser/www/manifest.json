@@ -1,0 +1,13 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "UTTianguis",
+  "short_name": "UTTianguis",
+  "version": "mx.edu.uttn.uttianguis",
+  "description": "Marketplace para la comunidad de la Universidad Tecnológica de Tamaulipas Norte",
+  "author": "Equipo de Desarrollo UTTN",
+  "icons": [],
+  "orientation": "portrait",
+  "start_url": "index.html",
+  "theme_color": "#2563EB"
+}

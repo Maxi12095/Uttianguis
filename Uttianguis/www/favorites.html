@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>UTTianguis - Inicio</title>
+      <meta name="description" content="UTTianguis - El marketplace para la comunidad universitaria de la UTT">
+      <link rel="icon" href="assets/images/Archivo ico.ico" type="image/png">
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <!-- Toastify CSS -->
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="css/styles.css">
+  </head>
+<body>
+<!-- Header -->
+<header class="bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark container">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+              <img src="images/logo.jpg" alt="UTTianguis Logo" height="40">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="marketplace.html">Explorar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="favorites.html">Favoritos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sell-product.html">Vender</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="admin-dashboard.html">Administración</a>
+                </li>
+            </ul>
+              <div class="d-flex auth-buttons">
+                  <!-- Add this notification dropdown before the auth buttons -->
+                  <div class="dropdown me-2 auth-only-logged-in" style="display: none;">
+                      <button class="btn btn-outline-light position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                          <i class="fas fa-bell"></i>
+                          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge">
+                              3
+                              <span class="visually-hidden">unread notifications</span>
+                          </span>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-end notification-dropdown p-0" aria-labelledby="notificationDropdown" style="width: 320px; max-height: 400px; overflow-y: auto;">
+                          <div class="notification-header d-flex justify-content-between align-items-center p-3 border-bottom">
+                              <h6 class="mb-0">Notificaciones</h6>
+                              <button class="btn btn-sm text-primary p-0" id="mark-all-read">Marcar todo como leído</button>
+                          </div>
+                          <div class="notification-body">
+                              <div class="notification-item unread p-3 border-bottom">
+                                  <div class="d-flex">
+                                      <div class="notification-icon bg-primary text-white rounded-circle p-2 me-3">
+                                          <i class="fas fa-comment-dots"></i>
+                                      </div>
+                                      <div class="notification-content">
+                                          <p class="mb-1 notification-text"><strong>Nuevo mensaje</strong> de Ana García sobre tu producto "Libro de Cálculo"</p>
+                                          <small class="text-muted">Hace 5 minutos</small>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="notification-item unread p-3 border-bottom">
+                                  <div class="d-flex">
+                                      <div class="notification-icon bg-success text-white rounded-circle p-2 me-3">
+                                          <i class="fas fa-check-circle"></i>
+                                      </div>
+                                      <div class="notification-content">
+                                          <p class="mb-1 notification-text">Tu producto "Calculadora TI-84" ha sido aprobado y publicado</p>
+                                          <small class="text-muted">Hace 2 horas</small>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="notification-item unread p-3 border-bottom">
+                                  <div class="d-flex">
+                                      <div class="notification-icon bg-warning text-white rounded-circle p-2 me-3">
+                                          <i class="fas fa-star"></i>
+                                      </div>
+                                      <div class="notification-content">
+                                          <p class="mb-1 notification-text">Carlos Martínez ha marcado tu producto como favorito</p>
+                                          <small class="text-muted">Hace 1 día</small>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="notification-item p-3 border-bottom">
+                                  <div class="d-flex">
+                                      <div class="notification-icon bg-info text-white rounded-circle p-2 me-3">
+                                          <i class="fas fa-info-circle"></i>
+                                      </div>
+                                      <div class="notification-content">
+                                          <p class="mb-1 notification-text">Actualización del sistema: Nuevas funciones disponibles</p>
+                                          <small class="text-muted">Hace 3 días</small>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="notification-footer text-center p-2 border-top">
+                              <a href="notifications.html" class="text-decoration-none">Ver todas las notificaciones</a>
+                          </div>
+                      </div>
+                  </div>
+                  <a href="sign-in.html" class="btn btn-outline-light me-2 auth-only-logged-out">Iniciar Sesión</a>
+                  <a href="sign-up.html" class="btn btn-light auth-only-logged-out">Registrarse</a>
+                  <div class="dropdown auth-only-logged-in" style="display: none;">
+                      <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="fas fa-user-circle me-1"></i>
+                          <span id="username">Usuario</span>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                          <li><a class="dropdown-item" href="profile.html">Mi Perfil</a></li>
+                          <li><a class="dropdown-item" href="my-products.html">Mis Productos</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#" id="logout-button">Cerrar Sesión</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </nav>
+</header>
+
+  <!-- Main Content -->
+  <section class="py-5">
+      <div class="container">
+          <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Mis favoritos</li>
+              </ol>
+          </nav>
+          
+          <div class="row mb-4">
+              <div class="col-12">
+                  <h1 class="display-5 fw-bold text-primary">Mis favoritos</h1>
+                  <p class="lead">Aquí encontrarás todos los productos que has marcado como favoritos.</p>
+              </div>
+          </div>
+          
+          <div class="row g-4" id="favorites-container">
+              <!-- Los productos favoritos se cargarán aquí dinámicamente -->
+              <div class="col-12 text-center py-5">
+                  <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">Cargando...</span>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Empty state -->
+          <div id="empty-favorites" class="text-center py-5 d-none">
+              <div class="mb-4">
+                  <i class="fas fa-heart fa-4x text-muted"></i>
+              </div>
+              <h3>No tienes productos favoritos</h3>
+              <p class="text-muted">Explora el marketplace y marca productos como favoritos para verlos aquí</p>
+              <a href="marketplace.html" class="btn btn-primary mt-3">
+                  <i class="fas fa-search me-2"></i> Explorar productos
+              </a>
+          </div>
+      </div>
+  </section>
+              
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+      <div class="container">
+          <div class="row g-4">
+              <div class="col-lg-4">
+                  <img src="assets/images/Logotipo aplicación..jpg" alt="UTTianguis Logo" height="40" class="mb-3">
+                  <p>UTTianguis es el marketplace oficial para la comunidad universitaria de la Universidad Tecnológica de Tamaulipas Norte.</p>
+              </div>
+              <div class="col-lg-2 col-md-4">
+                  <h5>Enlaces</h5>
+                  <ul class="nav flex-column">
+                      <li class="nav-item"><a href="index.html" class="nav-link text-white p-0 mb-2">Inicio</a></li>
+                      <li class="nav-item"><a href="marketplace.html" class="nav-link text-white p-0 mb-2">Explorar</a></li>
+                      <li class="nav-item"><a href="sell-product.html" class="nav-link text-white p-0 mb-2">Vender</a></li>
+                  </ul>
+              </div>
+              <div class="col-lg-2 col-md-4">
+                  <h5>Ayuda</h5>
+                  <ul class="nav flex-column">
+                      <li class="nav-item"><a href="faq.html" class="nav-link text-white p-0 mb-2">Preguntas Frecuentes</a></li>
+                      <li class="nav-item"><a href="terms.html" class="nav-link text-white p-0 mb-2">Términos de Uso</a></li>
+                      <li class="nav-item"><a href="privacy.html" class="nav-link text-white p-0 mb-2">Política de Privacidad</a></li>
+                  </ul>
+              </div>
+              <div class="col-lg-4 col-md-4">
+                  <h5>Contáctanos</h5>
+                  <p><i class="fas fa-envelope me-2"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81e2eeeff5e0e2f5eec1f4f5f5e8e0efe6f4e8f2afe4e5f4afecf9">[email&#160;protected]</a></p>
+                  <p><i class="fas fa-map-marker-alt me-2"></i> Universidad Tecnológica de Tamaulipas Norte</p>
+                  <div class="d-flex gap-2 mt-3">
+                      <a href="#" class="text-white fs-5"><i class="fab fa-facebook"></i></a>
+                      <a href="#" class="text-white fs-5"><i class="fab fa-instagram"></i></a>
+                      <a href="#" class="text-white fs-5"><i class="fab fa-twitter"></i></a>
+                  </div>
+              </div>
+          </div>
+          <hr class="my-4">
+          <div class="text-center">
+              <p class="mb-0">&copy; 2025 UTTianguis. Todos los derechos reservados.</p>
+          </div>
+      </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap JS (single reference) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Toastify JS -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <!-- API Services -->
+  <script type="module" src="js/api/apiService.js"></script>
+  <script type="module" src="js/api/tokenService.js"></script>
+  <!-- App JS -->
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/favorites.js"></script>
+  <script type="module" src="js/validation.js"></script>
+  <script type="module">
+      import { validateAuthAndHideLoginElements } from "./js/validation.js";
+      
+      // Validar y ocultar elementos de inicio de sesión al cargar la página
+      document.addEventListener('DOMContentLoaded', () => {
+          validateAuthAndHideLoginElements();
+      });
+  </script>
+  <!-- Cordova JS -->
+  <script src="cordova.js"></script>
+</body>
+</html>

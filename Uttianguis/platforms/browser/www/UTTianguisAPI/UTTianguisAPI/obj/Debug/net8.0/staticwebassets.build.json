@@ -1,0 +1,20 @@
+{
+  "Version": 1,
+  "Hash": "uOyCtY7CAGxk3kg3tfLbcjMFNRLrVPi7/S8VsyyqlXg=",
+  "Source": "UTTianguisAPI",
+  "BasePath": "_content/UTTianguisAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "UTTianguisAPI\\wwwroot",
+      "Source": "UTTianguisAPI",
+      "ContentRoot": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\wwwroot\\",
+      "BasePath": "_content/UTTianguisAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [],
+  "Endpoints": []
+}

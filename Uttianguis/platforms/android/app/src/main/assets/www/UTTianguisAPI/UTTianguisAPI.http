@@ -1,0 +1,6 @@
+@UTTianguisAPI_HostAddress = http://localhost:5187
+
+GET {{UTTianguisAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTTianguis - Iniciar Sesión</title>
+  <meta name="description" content="Inicia sesión en UTTianguis - El marketplace para la comunidad universitaria de la UTT">
+  <link rel="icon" href="assets/images/Archivo ico.ico" type="image/png">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Toastify CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-light">
+  <div class="container">
+      <div class="row justify-content-center mt-5">
+          <div class="col-md-6 col-lg-5">
+              <div class="card shadow">
+                  <div class="card-body p-4">
+                      <div class="text-center mb-4">
+                          <a href="index.html">
+                              <img src="images/logo.jpg" alt="UTTianguis Logo" class="img-fluid mb-3" style="max-width: 150px;">
+                          </a>
+                          <h2 class="fw-bold text-primary">UTTianguis</h2>
+                          <p class="text-muted">Marketplace Universitario</p>
+                      </div>
+                      
+                      <form id="login-form">
+                          <div class="mb-3">
+                              <label for="email" class="form-label">Correo Institucional</label>
+                              <div class="input-group">
+                                  <span class="input-group-text" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+                                  <input type="email" class="form-control" id="email" name="email" 
+                                      placeholder="ejemplo@uttn.mx" required aria-describedby="email-help">
+                              </div>
+                              <div class="form-text" id="email-help">Ingresa tu correo institucional @uttn.mx</div>
+                          </div>
+                          
+                          <div class="mb-3">
+                              <label for="password" class="form-label">Contraseña</label>
+                              <div class="input-group">
+                                  <span class="input-group-text" aria-hidden="true"><i class="fas fa-lock"></i></span>
+                                  <input type="password" class="form-control" id="password" name="password" 
+                                      placeholder="Contraseña" required>
+                                  <button class="btn btn-outline-secondary toggle-password" type="button" aria-label="Mostrar contraseña">
+                                      <i class="fas fa-eye" aria-hidden="true"></i>
+                                  </button>
+                              </div>
+                          </div>
+                          
+                          <div class="mb-3 form-check">
+                              <input type="checkbox" class="form-check-input" id="remember-me">
+                              <label class="form-check-label" for="remember-me">Recordarme</label>
+                              <a href="forgot-password.html" class="float-end text-decoration-none" id="forgot-password">¿Olvidaste tu contraseña?</a>
+                          </div>
+                          
+                          <div class="d-grid gap-2">
+                              <button type="submit" class="btn btn-primary btn-lg">
+                                  <i class="fas fa-sign-in-alt me-2" aria-hidden="true"></i>Iniciar Sesión
+                              </button>
+                          </div>
+                      </form>
+                      
+                      <div class="text-center mt-4">
+                          <p>¿No tienes cuenta? <a href="sign-up.html" class="text-decoration-none fw-bold">Regístrate</a></p>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="text-center mt-3 text-muted small">
+                  <p><a href="index.html" class="text-decoration-none text-muted">Volver al inicio</a></p>
+                  <p>Universidad Tecnológica de Tamaulipas Norte &copy; 2025</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div id="api-status" class="position-fixed bottom-0 end-0 m-3 p-2 rounded" style="background-color: #f8f9fa; border: 1px solid #dee2e6; display: none;">
+    <span id="api-status-icon" class="me-2">⚪</span>
+    <span id="api-status-text">Verificando API...</span>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Toastify JS -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <!-- Config JS -->
+  <script type="module" src="js/config.js"></script>
+  <!-- API Service -->
+  <script type="module" src="js/api/tokenService.js"></script>
+  <script type="module" src="js/api/apiService.js"></script>
+  <!-- Utils JS -->
+  <script type="module" src="js/utils.js"></script>
+  <!-- Auth JS -->
+  <script type="module" src="js/auth.js"></script>
+  <!-- Sign In JS -->
+  <script type="module" src="js/sign-in.js"></script>
+  <!-- Debug JS -->
+  <script src="js/signin-debug.js"></script>
+  <!-- Validation JS -->
+  <script type="module" src="js/validation.js"></script>
+
+  <script>
+      // Toggle password visibility
+      document.querySelector('.toggle-password').addEventListener('click', function() {
+          const passwordInput = document.getElementById('password');
+          const icon = this.querySelector('i');
+          
+          if (passwordInput.type === 'password') {
+              passwordInput.type = 'text';
+              icon.classList.remove('fa-eye');
+              icon.classList.add('fa-eye-slash');
+              this.setAttribute('aria-label', 'Ocultar contraseña');
+          } else {
+              passwordInput.type = 'password';
+              icon.classList.remove('fa-eye-slash');
+              icon.classList.add('fa-eye');
+              this.setAttribute('aria-label', 'Mostrar contraseña');
+          }
+      });
+
+      // Validar y ocultar elementos de inicio de sesión al cargar la página
+      document.addEventListener('DOMContentLoaded', () => {
+          validateAuthAndHideLoginElements();
+      });
+  </script>
+</body>
+</html>
+

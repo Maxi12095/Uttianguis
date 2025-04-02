@@ -1,0 +1,151 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|c:\\users\\fer_n\\downloads\\telegram desktop\\uttianguisapi\\uttianguisapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|solutionrelative:uttianguisapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|c:\\users\\fer_n\\downloads\\telegram desktop\\uttianguisapi\\uttianguisapi\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|solutionrelative:uttianguisapi\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|c:\\users\\fer_n\\downloads\\telegram desktop\\uttianguisapi\\uttianguisapi\\services\\apikeyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|solutionrelative:uttianguisapi\\services\\apikeyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|c:\\users\\fer_n\\downloads\\telegram desktop\\uttianguisapi\\uttianguisapi\\authentication\\apikeyauthenticationoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|solutionrelative:uttianguisapi\\authentication\\apikeyauthenticationoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|c:\\users\\fer_n\\downloads\\telegram desktop\\uttianguisapi\\uttianguisapi\\authentication\\apikeyauthenticationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|solutionrelative:uttianguisapi\\authentication\\apikeyauthenticationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|c:\\users\\fer_n\\downloads\\telegram desktop\\uttianguisapi\\uttianguisapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1048F5A8-0914-4C6D-ABFA-08FD0B5C063F}|UTTianguisAPI\\UTTianguisAPI.csproj|solutionrelative:uttianguisapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\Program.cs",
+              "RelativeDocumentMoniker": "UTTianguisAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\Program.cs",
+              "RelativeToolTip": "UTTianguisAPI\\Program.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAIwIAAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T23:23:28.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "UTTianguisAPI\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\Services\\UserService.cs",
+              "RelativeToolTip": "UTTianguisAPI\\Services\\UserService.cs",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T20:36:06.175Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApiKeyService.cs",
+              "DocumentMoniker": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\Services\\ApiKeyService.cs",
+              "RelativeDocumentMoniker": "UTTianguisAPI\\Services\\ApiKeyService.cs",
+              "ToolTip": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\Services\\ApiKeyService.cs",
+              "RelativeToolTip": "UTTianguisAPI\\Services\\ApiKeyService.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T20:23:29.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApiKeyAuthenticationOptions.cs",
+              "DocumentMoniker": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\Authentication\\ApiKeyAuthenticationOptions.cs",
+              "RelativeDocumentMoniker": "UTTianguisAPI\\Authentication\\ApiKeyAuthenticationOptions.cs",
+              "ToolTip": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\Authentication\\ApiKeyAuthenticationOptions.cs",
+              "RelativeToolTip": "UTTianguisAPI\\Authentication\\ApiKeyAuthenticationOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T20:23:21.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApiKeyAuthenticationHandler.cs",
+              "DocumentMoniker": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\Authentication\\ApiKeyAuthenticationHandler.cs",
+              "RelativeDocumentMoniker": "UTTianguisAPI\\Authentication\\ApiKeyAuthenticationHandler.cs",
+              "ToolTip": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\Authentication\\ApiKeyAuthenticationHandler.cs",
+              "RelativeToolTip": "UTTianguisAPI\\Authentication\\ApiKeyAuthenticationHandler.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T20:23:07.219Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "UTTianguisAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\fer_n\\Downloads\\Telegram Desktop\\UTTianguisAPI\\UTTianguisAPI\\appsettings.json",
+              "RelativeToolTip": "UTTianguisAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-26T01:35:01.283Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 828,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

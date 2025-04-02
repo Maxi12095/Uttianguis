@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="color-scheme" content="light dark">
+  
+  <!-- Modificar la sección de CSS para incluir solo los archivos permitidos -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <title>Notificaciones - UTTianguis</title>
+</head>
+<body>
+  <div class="app-container">
+      <!-- Cabecera -->
+      <header class="app-header">
+          <div class="header-left">
+              <button class="btn-icon back-button">
+                  <i class="bi bi-arrow-left"></i>
+              </button>
+          </div>
+          <h1 class="header-title">Notificaciones</h1>
+          <div class="header-right">
+              <button class="btn-icon" id="settings-button">
+                  <i class="bi bi-gear"></i>
+              </button>
+          </div>
+      </header>
+      
+      <!-- Contenido principal -->
+      <main class="app-content">
+          <!-- Filtros -->
+          <div class="notification-filters">
+              <div class="btn-group w-100 mb-3" role="group">
+                  <button type="button" class="btn btn-outline-primary active" data-filter="all">Todas</button>
+                  <button type="button" class="btn btn-outline-primary" data-filter="unread">No leídas</button>
+              </div>
+          </div>
+          
+          <!-- Lista de notificaciones -->
+          <div class="notification-list" id="notification-list">
+              <!-- Las notificaciones se cargarán dinámicamente -->
+              <div class="notification-empty text-center py-5" id="empty-state" style="display: none;">
+                  <i class="bi bi-bell-slash" style="font-size: 48px; opacity: 0.5;"></i>
+                  <p class="mt-3">No tienes notificaciones</p>
+              </div>
+              
+              <div class="optimized-loader" id="notifications-loader">
+                  <div class="spinner"></div>
+              </div>
+          </div>
+      </main>
+      
+      <!-- Barra de navegación -->
+      <nav class="app-nav">
+          <a href="index.html" class="nav-item">
+              <i class="bi bi-house"></i>
+              <span>Inicio</span>
+          </a>
+          <a href="search.html" class="nav-item">
+              <i class="bi bi-search"></i>
+              <span>Buscar</span>
+          </a>
+          <a href="sell.html" class="nav-item">
+              <i class="bi bi-plus-circle"></i>
+              <span>Vender</span>
+          </a>
+          <a href="messages.html" class="nav-item">
+              <i class="bi bi-chat"></i>
+              <span>Mensajes</span>
+          </a>
+          <a href="profile.html" class="nav-item">
+              <i class="bi bi-person"></i>
+              <span>Perfil</span>
+          </a>
+      </nav>
+  </div>
+  
+  <!-- Modal de configuración de notificaciones -->
+  <div class="modal fade" id="notification-settings-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Configuración de notificaciones</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              <div class="modal-body">
+                  <h6 class="mb-3">Temas de notificaciones</h6>
+                  <div class="notification-topics" id="notification-topics">
+                      <!-- Los temas se cargarán dinámicamente -->
+                      <div class="form-check form-switch mb-2">
+                          <input class="form-check-input" type="checkbox" id="topic-general" data-topic="general">
+                          <label class="form-check-label" for="topic-general">General</label>
+                      </div>
+                  </div>
+                  
+                  <hr>
+                  
+                  <h6 class="mb-3">Opciones adicionales</h6>
+                  <div class="form-check form-switch mb-2">
+                      <input class="form-check-input" type="checkbox" id="enable-foreground-notifications" checked>
+                      <label class="form-check-label" for="enable-foreground-notifications">Mostrar notificaciones en primer plano</label>
+                  </div>
+                  
+                  <div class="form-check form-switch mb-2">
+                      <input class="form-check-input" type="checkbox" id="enable-sound" checked>
+                      <label class="form-check-label" for="enable-sound">Sonido de notificaciones</label>
+                  </div>
+                  
+                  <div class="form-check form-switch mb-2">
+                      <input class="form-check-input" type="checkbox" id="enable-vibration" checked>
+                      <label class="form-check-label" for="enable-vibration">Vibración</label>
+                  </div>
+                  
+                  <hr>
+                  
+                  <button type="button" class="btn btn-danger w-100" id="clear-notifications-button">
+                      Borrar todas las notificaciones
+                  </button>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary" id="save-settings-button">Guardar</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <script src="cordova.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/security-manager.js"></script>
+  <script src="js/offline-manager.js"></script>
+  <script src="js/performance-optimizer.js"></script>
+  <script src="js/push-notification-manager.js"></script>
+  
+  <script>
+      document.addEventListener('deviceready', onDeviceReady, false);
+      
+      function onDeviceReady() {
+          // Inicializar componentes
+          initializeComponents()
+              .then(() => {
+                  // Cargar notificaciones
+                  loadNotifications();
+                  
+                  // Configurar eventos
+                  setupEvents();
+              })
+              .catch(error => {
+                  console.error('Error al inicializar componentes:', error);
+                  showError('Error al inicializar la aplicación');
+              });
+      }
+      
+      // Inicializar componentes
+      function initializeComponents() {
+          return new Promise((resolve, reject) => {
+              // Inicializar SecurityManager
+              if (window.SecurityManager) {
+                  SecurityManager.initialize()
+                      .then(() => console.log('SecurityManager inicializado'))
+                      .catch(error => console.error('Error inicializando SecurityManager:', error));
+              }
+              
+              // Inicializar OfflineManager
+              if (window.OfflineManager) {
+                  OfflineManager.initialize()
+                      .then(() => console.log('OfflineManager inicializado'))
+                      .catch(error => console.error('Error inicializando OfflineManager:', error));
+              }
+              
+              // Inicializar PerformanceOptimizer
+              if (window.PerformanceOptimizer) {
+                  PerformanceOptimizer.initialize()
+                      .then(() => console.log('PerformanceOptimizer inicializado'))
+                      .catch(error => console.error('Error inicializando PerformanceOptimizer:', error));
+              }
+              
+              // Inicializar PushNotificationManager
+              if (window.PushNotificationManager) {
+                  PushNotificationManager.initialize()
+                      .then(() => {
+                          console.log('PushNotificationManager inicializado');
+                          
+                          // Cargar temas de notificaciones
+                          loadNotificationTopics();
+                          
+                          resolve();
+                      })
+                      .catch(error => {
+                          console.error('Error inicializando PushNotificationManager:', error);
+                          
+                          // Continuar aunque haya error
+                          resolve();
+                      });
+              } else {
+                  resolve();
+              }
+          });
+      }
+      
+      // Cargar notificaciones
+      function loadNotifications(filter = 'all') {
+          // Mostrar loader
+          document.getElementById('notifications-loader').style.display = 'flex';
+          
+          // Ocultar estado vacío
+          document.getElementById('empty-state').style.display = 'none';
+          
+          // Limpiar lista
+          const notificationList = document.getElementById('notification-list');
+          
+          // Mantener solo el loader y el estado vacío
+          const loader = document.getElementById('notifications-loader');
+          const emptyState = document.getElementById('empty-state');
+          notificationList.innerHTML = '';
+          notificationList.appendChild(loader);
+          notificationList.appendChild(emptyState);
+          
+          // Verificar si PushNotificationManager está disponible
+          if (!window.PushNotificationManager) {
+              // Ocultar loader
+              loader.style.display = 'none';
+              
+              // Mostrar estado vacío
+              emptyState.style.display = 'block';
+              
+              return;
+          }
+          
+          // Obtener notificaciones
+          const options = {
+              onlyUnread: filter === 'unread'
+          };
+          
+          const notifications = PushNotificationManager.getNotificationHistory(options);
+          
+          // Ocultar loader
+          loader.style.display = 'none';
+          
+          // Verificar si hay notificaciones
+          if (notifications.length === 0) {
+              // Mostrar estado vacío
+              emptyState.style.display = 'block';
+              return;
+          }
+          
+          // Mostrar notificaciones
+          notifications.forEach(notification => {
+              const notificationElement = createNotificationElement(notification);
+              notificationList.appendChild(notificationElement);
+          });
+          
+          // Optimizar contenedor
+          if (window.PerformanceOptimizer) {
+              PerformanceOptimizer.optimizeContainer(notificationList);
+          }
+      }
+      
+      // Crear elemento de notificación
+      function createNotificationElement(notification) {
+          const element = document.createElement('div');
+          element.className = `notification-item ${notification.read ? 'read' : 'unread'}`;
+          element.dataset.id = notification.id;
+          
+          // Formatear fecha
+          const date = new Date(notification.timestamp);
+          const formattedDate = formatDate(date);
+          
+          // Determinar icono según tipo
+          let icon = 'bell';
+          if (notification.data && notification.data.type) {
+              switch (notification.data.type) {
+                  case 'message':
+                      icon = 'chat';
+                      break;
+                  case 'order':
+                      icon = 'bag';
+                      break;
+                  case 'product':
+                      icon = 'tag';
+                      break;
+                  case 'system':
+                      icon = 'gear';
+                      break;
+              }
+          }
+          
+          element.innerHTML = `
+              <div class="notification-icon">
+                  <i class="bi bi-${icon}"></i>
+              </div>
+              <div class="notification-content">
+                  <div class="notification-header">
+                      <h3 class="notification-title">${notification.title}</h3>
+                      <span class="notification-time">${formattedDate}</span>
+                  </div>
+                  <p class="notification-body">${notification.body}</p>
+              </div>
+              <div class="notification-actions">
+                  <button class="btn-icon delete-notification" data-id="${notification.id}">
+                      <i class="bi bi-trash"></i>
+                  </button>
+              </div>
+          `;
+          
+          // Evento de clic
+          element.addEventListener('click', function(event) {
+              // Ignorar si se hizo clic en el botón de eliminar
+              if (event.target.closest('.delete-notification')) {
+                  return;
+              }
+              
+              // Marcar como leída
+              markNotificationAsRead(notification.id);
+              
+              // Manejar acción
+              handleNotificationAction(notification);
+          });
+          
+          // Evento de botón eliminar
+          const deleteButton = element.querySelector('.delete-notification');
+          if (deleteButton) {
+              deleteButton.addEventListener('click', function(event) {
+                  event.stopPropagation();
+                  deleteNotification(notification.id);
+              });
+          }
+          
+          return element;
+      }
+      
+      // Marcar notificación como leída
+      function markNotificationAsRead(id) {
+          // Verificar si PushNotificationManager está disponible
+          if (!window.PushNotificationManager) {
+              return;
+          }
+          
+          // Buscar notificación en el DOM
+          const element = document.querySelector(`.notification-item[data-id="${id}"]`);
+          if (element) {
+              element.classList.remove('unread');
+              element.classList.add('read');
+          }
+          
+          // Buscar notificación en historial
+          const notifications = PushNotificationManager.getNotificationHistory();
+          const notification = notifications.find(n => n.id === id);
+          
+          if (notification) {
+              // Marcar como leída
+              PushNotificationManager.markNotificationAsRead({
+                  messageId: id
+              });
+          }
+      }
+      
+      // Eliminar notificación
+      function deleteNotification(id) {
+          // Verificar si PushNotificationManager está disponible
+          if (!window.PushNotificationManager) {
+              return;
+          }
+          
+          // Eliminar del DOM con animación
+          const element = document.querySelector(`.notification-item[data-id="${id}"]`);
+          if (element) {
+              element.style.height = `${element.offsetHeight}px`;
+              
+              // Forzar reflow
+              element.offsetHeight;
+              
+              // Añadir clase para animación
+              element.classList.add('removing');
+              
+              // Eliminar después de la animación
+              setTimeout(() => {
+                  element.style.height = '0';
+                  element.style.marginTop = '0';
+                  element.style.marginBottom = '0';
+                  element.style.paddingTop = '0';
+                  element.style.paddingBottom = '0';
+                  
+                  setTimeout(() => {
+                      element.remove();
+                      
+                      // Verificar si quedan notificaciones
+                      const notificationList = document.getElementById('notification-list');
+                      const notifications = notificationList.querySelectorAll('.notification-item');
+                      
+                      if (notifications.length === 0) {
+                          // Mostrar estado vacío
+                          document.getElementById('empty-state').style.display = 'block';
+                      }
+                  }, 300);
+              }, 10);
+          }
+          
+          // Eliminar del historial
+          PushNotificationManager.removeNotificationFromHistory(id);
+      }
+      
+      // Manejar acción de notificación
+      function handleNotificationAction(notification) {
+          // Obtener datos de la notificación
+          const data = notification.data || {};
+          
+          // Verificar si hay acción
+          if (data.action) {
+              switch (data.action) {
+                  case 'openProduct':
+                      // Abrir producto
+                      if (data.productId) {
+                          window.location.href = `product-details.html?id=${data.productId}`;
+                      }
+                      break;
+                      
+                  case 'openOrder':
+                      // Abrir orden
+                      if (data.orderId) {
+                          window.location.href = `order-details.html?id=${data.orderId}`;
+                      }
+                      break;
+                      
+                  case 'openChat':
+                      // Abrir chat
+                      if (data.chatId) {
+                          window.location.href = `chat.html?id=${data.chatId}`;
+                      }
+                      break;
+                      
+                  case 'openUrl':
+                      // Abrir URL
+                      if (data.url) {
+                          window.location.href = data.url;
+                      }
+                      break;
+              }
+          }
+      }
+      
+      // Cargar temas de notificaciones
+      function loadNotificationTopics() {
+          // Verificar si PushNotificationManager está disponible
+          if (!window.PushNotificationManager) {
+              return;
+          }
+          
+          // Obtener temas disponibles
+          const availableTopics = PushNotificationManager.getAvailableTopics();
+          
+          // Obtener temas suscritos
+          const subscribedTopics = PushNotificationManager.getSubscribedTopics();
+          
+          // Obtener contenedor
+          const topicsContainer = document.getElementById('notification-topics');
+          
+          // Limpiar contenedor
+          topicsContainer.innerHTML = '';
+          
+          // Mostrar temas
+          availableTopics.forEach(topic => {
+              const topicElement = document.createElement('div');
+              topicElement.className = 'form-check form-switch mb-2';
+              
+              // Formatear nombre del tema
+              let topicName = topic.charAt(0).toUpperCase() + topic.slice(1);
+              
+              // Casos especiales
+              switch (topic) {
+                  case 'general':
+                      topicName = 'General';
+                      break;
+                  case 'offers':
+                      topicName = 'Ofertas y promociones';
+                      break;
+                  case 'messages':
+                      topicName = 'Mensajes nuevos';
+                      break;
+                  case 'orders':
+                      topicName = 'Actualizaciones de pedidos';
+                      break;
+                  case 'system':
+                      topicName = 'Sistema y seguridad';
+                      break;
+              }
+              
+              topicElement.innerHTML = `
+                  <input class="form-check-input" type="checkbox" id="topic-${topic}" data-topic="${topic}" ${subscribedTopics.includes(topic) ? 'checked' : ''}>
+                  <label class="form-check-label" for="topic-${topic}">${topicName}</label>
+              `;
+              
+              topicsContainer.appendChild(topicElement);
+          });
+      }
+      
+      // Guardar configuración de notificaciones
+      function saveNotificationSettings() {
+          // Verificar si PushNotificationManager está disponible
+          if (!window.PushNotificationManager) {
+              return;
+          }
+          
+          // Obtener temas seleccionados
+          const topicCheckboxes = document.querySelectorAll('#notification-topics input[type="checkbox"]');
+          const selectedTopics = [];
+          
+          topicCheckboxes.forEach(checkbox => {
+              const topic = checkbox.dataset.topic;
+              const isChecked = checkbox.checked;
+              
+              if (isChecked) {
+                  selectedTopics.push(topic);
+              }
+          });
+          
+          // Obtener temas suscritos actuales
+          const subscribedTopics = PushNotificationManager.getSubscribedTopics();
+          
+          // Temas a suscribir
+          const topicsToSubscribe = selectedTopics.filter(topic => !subscribedTopics.includes(topic));
+          
+          // Temas a cancelar
+          const topicsToUnsubscribe = subscribedTopics.filter(topic => !selectedTopics.includes(topic));
+          
+          // Suscribir a nuevos temas
+          topicsToSubscribe.forEach(topic => {
+              PushNotificationManager.subscribeTopic(topic)
+                  .then(() => console.log(`Suscrito al tema: ${topic}`))
+                  .catch(error => console.error(`Error al suscribir al tema ${topic}:`, error));
+          });
+          
+          // Cancelar suscripción a temas no seleccionados
+          topicsToUnsubscribe.forEach(topic => {
+              PushNotificationManager.unsubscribeTopic(topic)
+                  .then(() => console.log(`Cancelada suscripción al tema: ${topic}`))
+                  .catch(error => console.error(`Error al cancelar suscripción al tema ${topic}:`, error));
+          });
+          
+          // Guardar otras opciones
+          const enableForegroundNotifications = document.getElementById('enable-foreground-notifications').checked;
+          const enableSound = document.getElementById('enable-sound').checked;
+          const enableVibration = document.getElementById('enable-vibration').checked;
+          
+          // Guardar en localStorage
+          localStorage.setItem('notification_foreground', enableForegroundNotifications ? 'true' : 'false');
+          localStorage.setItem('notification_sound', enableSound ? 'true' : 'false');
+          localStorage.setItem('notification_vibration', enableVibration ? 'true' : 'false');
+          
+          // Actualizar configuración
+          if (window.PushNotificationManager.config) {
+              window.PushNotificationManager.config.enableForegroundNotifications = enableForegroundNotifications;
+          }
+          
+          // Cerrar modal
+          const modal = bootstrap.Modal.getInstance(document.getElementById('notification-settings-modal'));
+          if (modal) {
+              modal.hide();
+          }
+          
+          // Mostrar mensaje
+          showToast('Configuración guardada');
+      }
+      
+      // Borrar todas las notificaciones
+      function clearAllNotifications() {
+          // Verificar si PushNotificationManager está disponible
+          if (!window.PushNotificationManager) {
+              return;
+          }
+          
+          // Confirmar
+          if (!confirm('¿Estás seguro de que quieres borrar todas las notificaciones?')) {
+              return;
+          }
+          
+          // Limpiar historial
+          PushNotificationManager.clearNotificationHistory()
+              .then(() => {
+                  // Recargar notificaciones
+                  loadNotifications();
+                  
+                  // Cerrar modal
+                  const modal = bootstrap.Modal.getInstance(document.getElementById('notification-settings-modal'));
+                  if (modal) {
+                      modal.hide();
+                  }
+                  
+                  // Mostrar mensaje
+                  showToast('Todas las notificaciones han sido borradas');
+              })
+              .catch(error => {
+                  console.error('Error al borrar notificaciones:', error);
+                  showError('Error al borrar notificaciones');
+              });
+      }
+      
+      // Configurar eventos
+      function setupEvents() {
+          // Botón de volver
+          const backButton = document.querySelector('.back-button');
+          if (backButton) {
+              backButton.addEventListener('click', function() {
+                  window.history.back();
+              });
+          }
+          
+          // Botón de configuración
+          const settingsButton = document.getElementById('settings-button');
+          if (settingsButton) {
+              settingsButton.addEventListener('click', function() {
+                  // Cargar opciones guardadas
+                  const enableForegroundNotifications = localStorage.getItem('notification_foreground') !== 'false';
+                  const enableSound = localStorage.getItem('notification_sound') !== 'false';
+                  const enableVibration = localStorage.getItem('notification_vibration') !== 'false';
+                  
+                  document.getElementById('enable-foreground-notifications').checked = enableForegroundNotifications;
+                  document.getElementById('enable-sound').checked = enableSound;
+                  document.getElementById('enable-vibration').checked = enableVibration;
+                  
+                  // Mostrar modal
+                  const modal = new bootstrap.Modal(document.getElementById('notification-settings-modal'));
+                  modal.show();
+              });
+          }
+          
+          // Botones de filtro
+          const filterButtons = document.querySelectorAll('.notification-filters button');
+          filterButtons.forEach(button => {
+              button.addEventListener('click', function() {
+                  // Quitar clase activa de todos los botones
+                  filterButtons.forEach(btn => btn.classList.remove('active'));
+                  
+                  // Añadir clase activa al botón clicado
+                  this.classList.add('active');
+                  
+                  // Obtener filtro
+                  const filter = this.dataset.filter;
+                  
+                  // Cargar notificaciones con filtro
+                  loadNotifications(filter);
+              });
+          });
+          
+          // Botón de guardar configuración
+          const saveSettingsButton = document.getElementById('save-settings-button');
+          if (saveSettingsButton) {
+              saveSettingsButton.addEventListener('click', saveNotificationSettings);
+          }
+          
+          // Botón de borrar notificaciones
+          const clearNotificationsButton = document.getElementById('clear-notifications-button');
+          if (clearNotificationsButton) {
+              clearNotificationsButton.addEventListener('click', clearAllNotifications);
+          }
+          
+          // Evento de actualización de historial de notificaciones
+          document.addEventListener('app:notificationHistoryUpdated', function() {
+              // Recargar notificaciones
+              const activeFilter = document.querySelector('.notification-filters button.active');
+              const filter = activeFilter ? activeFilter.dataset.filter : 'all';
+              
+              loadNotifications(filter);
+          });
+      }
+      
+      // Formatear fecha
+      function formatDate(date) {
+          const now = new Date();
+          const diff = now - date;
+          
+          // Menos de un minuto
+          if (diff < 60 * 1000) {
+              return 'Ahora';
+          }
+          
+          // Menos de una hora
+          if (diff < 60 * 60 * 1000) {
+              const minutes = Math.floor(diff / (60 * 1000));
+              return `Hace ${minutes} ${minutes === 1 ? 'minuto' : 'minutos'}`;
+          }
+          
+          // Menos de un día
+          if (diff < 24 * 60 * 60 * 1000) {
+              const hours = Math.floor(diff / (60 * 60 * 1000));
+              return `Hace ${hours} ${hours === 1 ? 'hora' : 'horas'}`;
+          }
+          
+          // Menos de una semana
+          if (diff < 7 * 24 * 60 * 60 * 1000) {
+              const days = Math.floor(diff / (24 * 60 * 60 * 1000));
+              return `Hace ${days} ${days === 1 ? 'día' : 'días'}`;
+          }
+          
+          // Formatear fecha
+          const day = date.getDate().toString().padStart(2, '0');
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const year = date.getFullYear();
+          
+          return `${day}/${month}/${year}`;
+      }
+      
+      // Mostrar mensaje de error
+      function showError(message) {
+          // Crear elemento de toast
+          const toast = document.createElement('div');
+          toast.className = 'toast align-items-center text-white bg-danger';
+          toast.setAttribute('role', 'alert');
+          toast.setAttribute('aria-live', 'assertive');
+          toast.setAttribute('aria-atomic', 'true');
+          
+          toast.innerHTML = `
+              <div class="d-flex">
+                  <div class="toast-body">
+                      ${message}
+                  </div>
+                  <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+              </div>
+          `;
+          
+          // Añadir al DOM
+          document.body.appendChild(toast);
+          
+          // Mostrar toast
+          const bsToast = new bootstrap.Toast(toast);
+          bsToast.show();
+          
+          // Eliminar después de ocultarse
+          toast.addEventListener('hidden.bs.toast', function() {
+              toast.remove();
+          });
+      }
+      
+      // Mostrar mensaje de toast
+      function showToast(message) {
+          // Crear elemento de toast
+          const toast = document.createElement('div');
+          toast.className = 'toast align-items-center text-white bg-primary';
+          toast.setAttribute('role', 'alert');
+          toast.setAttribute('aria-live', 'assertive');
+          toast.setAttribute('aria-atomic', 'true');
+          
+          toast.innerHTML = `
+              <div class="d-flex">
+                  <div class="toast-body">
+                      ${message}
+                  </div>
+                  <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+              </div>
+          `;
+          
+          // Añadir al DOM
+          document.body.appendChild(toast);
+          
+          // Mostrar toast
+          const bsToast = new bootstrap.Toast(toast);
+          bsToast.show();
+          
+          // Eliminar después de ocultarse
+          toast.addEventListener('hidden.bs.toast', function() {
+              toast.remove();
+          });
+      }
+      
+      // Si no estamos en Cordova, inicializar directamente
+      if (!window.cordova) {
+          onDeviceReady();
+      }
+  </script>
+</body>
+</html>
+

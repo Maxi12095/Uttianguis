@@ -1,0 +1,20 @@
+{
+  "Version": 1,
+  "Hash": "3nKee1awH8ilWVCM8NUNgdECDgy4Tt0Bsp47o2Rtp/8=",
+  "Source": "UTTianguisAPI",
+  "BasePath": "_content/UTTianguisAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "UTTianguisAPI\\wwwroot",
+      "Source": "UTTianguisAPI",
+      "ContentRoot": "C:\\Users\\azuar\\source\\repos\\UTTianguisAPI\\UTTianguisAPI\\wwwroot\\",
+      "BasePath": "_content/UTTianguisAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [],
+  "Endpoints": []
+}

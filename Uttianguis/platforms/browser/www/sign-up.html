@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTTianguis - Registro</title>
+  <meta name="description" content="Regístrate en UTTianguis - El marketplace para la comunidad universitaria de la UTT">
+  <link rel="icon" href="assets/images/Archivo ico.ico" type="image/png">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Toastify CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-light">
+  <div class="container">
+      <div class="row justify-content-center my-5">
+          <div class="col-md-8 col-lg-6">
+              <div class="card shadow">
+                  <div class="card-body p-4">
+                      <div class="text-center mb-4">
+                          <a href="index.html">
+                              <img src="images/logo.jpg" alt="UTTianguis Logo" class="img-fluid mb-3" style="max-width: 150px;">
+                          </a>
+                          <h2 class="fw-bold text-primary">UTTianguis</h2>
+                          <p class="text-muted">Registro de Nuevo Usuario</p>
+                      </div>
+                      
+                      <form id="register-form">
+                          <div class="mb-3">
+                              <label for="name" class="form-label">Nombre Completo</label>
+                              <div class="input-group">
+                                  <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+                                  <input type="text" class="form-control" id="name" name="name" 
+                                      placeholder="Nombre y Apellidos" required>
+                              </div>
+                          </div>
+                          
+                          <div class="mb-3">
+                              <label for="email" class="form-label">Correo Institucional</label>
+                              <div class="input-group">
+                                  <span class="input-group-text" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+                                  <input type="email" class="form-control" id="email" name="email" 
+                                      placeholder="ejemplo@uttn.mx" required
+                                      pattern="[a-zA-Z0-9._%+-]+@uttn\.mx$"
+                                      aria-describedby="email-help">
+                              </div>
+                              <div class="form-text" id="email-help">Debe ser un correo institucional con dominio @uttn.mx</div>
+                          </div>
+                          
+                          <div class="mb-3">
+                              <label for="phone" class="form-label">Número de Teléfono</label>
+                              <div class="input-group">
+                                  <span class="input-group-text" aria-hidden="true"><i class="fas fa-phone"></i></span>
+                                  <input type="tel" class="form-control" id="phone" name="phone" 
+                                      placeholder="8671234567" required
+                                      pattern="[0-9]{10}"
+                                      aria-describedby="phone-help">
+                              </div>
+                              <div class="form-text" id="phone-help">Ingresa un número de 10 dígitos sin espacios ni guiones</div>
+                          </div>
+                          
+                          <div class="mb-3">
+                              <label for="password" class="form-label">Contraseña</label>
+                              <div class="input-group">
+                                  <span class="input-group-text" aria-hidden="true"><i class="fas fa-lock"></i></span>
+                                  <input type="password" class="form-control" id="password" name="password" 
+                                      placeholder="Contraseña" required minlength="8"
+                                      aria-describedby="password-help">
+                                  <button class="btn btn-outline-secondary toggle-password" type="button" aria-label="Mostrar contraseña">
+                                      <i class="fas fa-eye" aria-hidden="true"></i>
+                                  </button>
+                              </div>
+                              <div class="form-text" id="password-help">Mínimo 8 caracteres, incluyendo mayúsculas, minúsculas y números</div>
+                          </div>
+                          
+                          <div class="mb-3">
+                              <label for="confirm-password" class="form-label">Confirmar Contraseña</label>
+                              <div class="input-group">
+                                  <span class="input-group-text" aria-hidden="true"><i class="fas fa-lock"></i></span>
+                                  <input type="password" class="form-control" id="confirm-password" name="confirm-password" 
+                                      placeholder="Confirmar Contraseña" required minlength="8">
+                                  <button class="btn btn-outline-secondary toggle-password" type="button" aria-label="Mostrar contraseña">
+                                      <i class="fas fa-eye" aria-hidden="true"></i>
+                                  </button>
+                              </div>
+                          </div>
+                          
+                          <div class="mb-3 form-check">
+                              <input type="checkbox" class="form-check-input" id="terms" required>
+                              <label class="form-check-label" for="terms">
+                                  Acepto los <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Términos y Condiciones</a>
+                              </label>
+                          </div>
+                          
+                          <div class="d-grid gap-2">
+                              <button type="submit" class="btn btn-primary btn-lg">
+                                  <i class="fas fa-user-plus me-2" aria-hidden="true"></i>Crear Cuenta
+                              </button>
+                          </div>
+                      </form>
+                      
+                      <div class="text-center mt-4">
+                          <p>¿Ya tienes cuenta? <a href="sign-in.html" class="text-decoration-none fw-bold">Iniciar Sesión</a></p>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="text-center mt-3 text-muted small">
+                  <p><a href="index.html" class="text-decoration-none text-muted">Volver al inicio</a></p>
+                  <p>Universidad Tecnológica de Tamaulipas Norte &copy; 2025</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <!-- Terms and Conditions Modal -->
+  <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <h6>1. Aceptación de los Términos</h6>
+                  <p>Al registrarte y utilizar UTTianguis, aceptas cumplir con estos términos y condiciones.</p>
+                  
+                  <h6>2. Elegibilidad</h6>
+                  <p>Para utilizar UTTianguis, debes ser estudiante activo de la Universidad Tecnológica de Tamaulipas Norte y tener una cuenta de correo institucional válida (@uttn.mx).</p>
+                  
+                  <h6>3. Conducta del Usuario</h6>
+                  <p>Los usuarios se comprometen a:</p>
+                  <ul>
+                      <li>Proporcionar información precisa y veraz</li>
+                      <li>No publicar contenido ilegal, ofensivo o inapropiado</li>
+                      <li>No vender productos prohibidos o ilegales</li>
+                      <li>Respetar a otros usuarios de la plataforma</li>
+                  </ul>
+                  
+                  <h6>4. Productos Prohibidos</h6>
+                  <p>Está prohibido publicar:</p>
+                  <ul>
+                      <li>Productos ilegales o robados</li>
+                      <li>Alcohol, tabaco o drogas</li>
+                      <li>Armas o explosivos</li>
+                      <li>Material pornográfico</li>
+                      <li>Productos que infrinjan derechos de autor</li>
+                  </ul>
+                  
+                  <h6>5. Privacidad</h6>
+                  <p>UTTianguis recopila y utiliza información personal de acuerdo con nuestra Política de Privacidad.</p>
+                  
+                  <h6>6. Responsabilidad</h6>
+                  <p>UTTianguis no se hace responsable de las transacciones entre usuarios. Los usuarios son responsables de verificar la calidad y legitimidad de los productos antes de comprarlos.</p>
+                  
+                  <h6>7. Suspensión de Cuentas</h6>
+                  <p>UTTianguis se reserva el derecho de suspender o eliminar cuentas que violen estos términos y condiciones.</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Toastify JS -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <!-- Config JS -->
+  <script type="module" src="js/config.js"></script>
+  <!-- API Service -->
+  <script type="module" src="js/api/tokenService.js"></script>
+  <script type="module" src="js/api/apiService.js"></script>
+  <!-- Sign Up JS -->
+  <script type="module" src="js/sign-up.js"></script>
+  
+  <script>
+      // Toggle password visibility
+      document.querySelectorAll('.toggle-password').forEach(button => {
+          button.addEventListener('click', function() {
+              const passwordInput = this.previousElementSibling;
+              const icon = this.querySelector('i');
+              
+              if (passwordInput.type === 'password') {
+                  passwordInput.type = 'text';
+                  icon.classList.remove('fa-eye');
+                  icon.classList.add('fa-eye-slash');
+                  this.setAttribute('aria-label', 'Ocultar contraseña');
+              } else {
+                  passwordInput.type = 'password';
+                  icon.classList.remove('fa-eye-slash');
+                  icon.classList.add('fa-eye');
+                  this.setAttribute('aria-label', 'Mostrar contraseña');
+              }
+          });
+      });
+  </script>
+</body>
+</html>
